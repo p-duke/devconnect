@@ -5,8 +5,8 @@ Rails.application.configure do
     storage: :s3,
     s3_credentials: {
       bucket: 'dbcfinalproject',
-      access_key_id: Figaro.env.access_key_id,
-      secret_access_key: Figaro.env.secret_access_key,
+      access_key_id: "AKIAJQRK3MMXEXV2KBIQ",
+      secret_access_key: "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",
       s3_region: 'us-west-2',
       s3_host_name: 's3-us-west-2.amazonaws.com',
       s3_protocol: 'https'
