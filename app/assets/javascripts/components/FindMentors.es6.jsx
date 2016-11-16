@@ -3,7 +3,8 @@ class FindMentors extends React.Component {
     super();
     this.state={
       mentors:[],
-      locations:[]
+      locations:[],
+      avatars: []
     }
   }
   componentDidMount(){
@@ -32,6 +33,7 @@ class FindMentors extends React.Component {
   }
 
   render(){
+    // debugger;
     return(
       <div className="find-mentors">
        <div id='search-mentor' className="col-md-12 col-sm-12 col-xs-12 text-center">
@@ -39,7 +41,7 @@ class FindMentors extends React.Component {
             <div className="row">
               <form id='mentorForm'>
                 <div className="input-group form-input-group">
-                  <input ref="skills" className="form-control from-input-field" placeholder="skills separare with comma ex( ruby,html,javascript )"/>
+                  <input ref="skills" className="form-control from-input-field" placeholder="skills separated with a comma ex. ( ruby, html, javascript )"/>
                   <div className="input-group-btn">
 
                     <select  ref='locations' id="mentor-dropdown" className="form-control" placeholder="location">
