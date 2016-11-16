@@ -1,21 +1,29 @@
 class Mentor extends React.Component {
   viewProfile(){}
 
-  componentWillMount() {
-    avatar_url = " "
+  // componentWillMount() {
+  //   avatar_url = " "
 
-    for (i = 0; i < this.props.avatar.length; i++ ) {
-      if (this.props.data.id === this.props.avatar[i].id) {
-        avatar_url = this.props.avatar[i].url
-      }
-    }
-  }
+  //   for (i = 0; i < this.props.avatar.length; i++ ) {
+  //     if (this.props.data.id === this.props.avatar[i].id) {
+  //       avatar_url = this.props.avatar[i].url;
+  //     }
+  //   }
+  //   return avatar_url
+  // }
 
 
   render(){
-
+    // debugger;
     let {id,bio,first_name,last_name,email,location,status,experience} = this.props.data
     var skills = this.props.data.skills
+    var avatar_url = ""
+
+    for (i = 0; i < this.props.avatar.length; i++ ) {
+      if (this.props.data.id === this.props.avatar[i].id) {
+        avatar_url = this.props.avatar[i].url;
+      }
+    }
 
     return(
       <div className="col-md-4 col-sm-4 col-xs-12 profile_details">
@@ -26,7 +34,7 @@ class Mentor extends React.Component {
               <h2>{first_name} {last_name}</h2>
               <p><strong>email: </strong>{email}</p>
               <p><strong>status: </strong>{status}</p>
-              <p><strong>experience: </strong>{experience}</p>
+              <p><strong>skills: </strong></p>
               <ul>
                 {skills ? skills.map((skill,index)=>{
                   return(
@@ -41,7 +49,7 @@ class Mentor extends React.Component {
               </div>
 
               <div className="right col-xs-5 text-center">
-              <img src={avatar_url.match('missing') ? "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png" : avatar_url } className="img-circle img-responsive"/>
+              <img src={avatar_url.match('missing') ? "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png" : avatar_url } className="img-circle img-responsive" />
               </div>
           </div>
             <div className="col-xs-12 bottom text-center">
