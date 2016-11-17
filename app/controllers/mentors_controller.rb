@@ -22,7 +22,7 @@ class MentorsController < ApplicationController
   def search
 
     @skills = mentor_params["skills"]
-
+    binding.pry
     if @skills.empty?
       @skilledMentors = User.where("is_mentor = ? AND location = ? ", true, mentor_params["location"])
     else

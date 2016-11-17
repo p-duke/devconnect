@@ -2191,6 +2191,13 @@ input.parsley-error, textarea.parsley-error, select.parsley-error {
   transition: 0.42s;
 }
 
+hr {
+  border: none;
+  height: 1px;
+  width: 100%;
+  background-color: #191970;
+}
+
 /* alerts (when validation fails) */
 
 .item .alert {
@@ -2361,6 +2368,7 @@ textarea {
   padding: 10px;
   vertical-align: top;
   width: 200px;
+
 }
 textarea:focus {
   outline-style: solid;
