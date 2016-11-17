@@ -43,7 +43,7 @@ class TopMentors extends React.Component {
            })
            }
       </div>
-      <hr/>
+
       </div>
 
     )
