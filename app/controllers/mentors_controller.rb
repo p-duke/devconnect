@@ -20,49 +20,24 @@ class MentorsController < ApplicationController
   end
 
   def search
+    @skills = mentor_params["skills"].split(' ')
+    @skilledMentors = nil
 
-    @skills = mentor_params["skills"]
-    binding.pry
     if @skills.empty?
       @skilledMentors = User.where("is_mentor = ? AND location = ? ", true, mentor_params["location"])
+    elsif @skills.count > 1
+      @mentors = User.where("is_mentor = ? AND location = ? ", true, mentor_params["location"])
+      @skills.each do |skill|
+        @skilledMentors = @mentors.select {|mentor| mentor.skills.find_by(name: skill)}
+      end
     else
       @mentors = User.where("is_mentor = ? AND location = ? ", true, mentor_params["location"])
       @skilledMentors = @mentors.select {|mentor| mentor.skills.find_by(name: mentor_params["skills"])}
     end
-    # binding.pry
 
-    # # make skills into an array
-    # @search_skills = mentor_params[:skills].split(",")
 
-    # if mentor_params[:skills].empty?
+    render json: @skilledMentors
 
-    #   # get all of the user with the location only
-    #     @mentors << User.where("is_mentor = ? AND location = ? ", true ,mentor_params[:location])
-    #     render json:@mentors.flatten.uniq
-    #   else
-    #     # get all of the user with skills and location
-
-    #     # will search for matching text on skills
-    #     @mentorSkills = @search_skills.map do |skill|
-    #       Skill.where(["name LIKE ?","%#{skill.strip.downcase}%"])
-    #     end
-
-    #     @mentorSkills.flatten.map do |skill|
-    #       skill.endorsed.each do |endorsed|
-    #         if endorsed.location == mentor_params[:location]
-    #           @mentors << User.where("is_mentor = ? AND location = ? ", true ,mentor_params[:location])
-    #           @mentors << endorsed
-    #         end
-    #       end
-    #     end
-    #     # fillter mentors with skills
-    #     @mentors.flatten.each do |mentor|
-    #       @skilledMentors << mentor if !mentor.skills.empty?
-    #     end
-
-        # return a json object
-        render json: @skilledMentors
-    # end
   end
 
   private
