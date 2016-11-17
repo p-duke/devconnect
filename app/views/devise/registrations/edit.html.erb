@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
 
 <ul>
   <% if flash[:error] %>
@@ -8,148 +8,158 @@
   <% end %>
 </ul>
 
+<div class="row">
+<div id="register-form" class="form-horizontal form-label-left input-mask">
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<hr>
+<br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <!-- <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.email_field :first_name, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.email_field :last_name, autofocus: true %>
-  </div> -->
-
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :location %><br />
-    <%= f.text_field :location, autofocus: true %>
+    <%= f.text_field :location, class:"form-control has-feedback-left", autofocus: true %>
   </div>
 
-  <div class="field">
+
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :professional_status %><br />
-    <%= f.text_field :status, autofocus: true %>
+    <%= f.text_field :status, class:"form-control has-feedback-right", autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :place_of_work %><br />
-    <%= f.text_field :place_of_work, autofocus: true %>
+    <%= f.text_field :place_of_work, class:"form-control has-feedback-left", autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :position %><br />
-    <%= f.text_field :position, autofocus: true %>
+    <%= f.text_field :position, class:"form-control has-feedback-right", autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :goals %><br />
-    <%= f.text_area :goals, autofocus: true %>
+    <%= f.text_area :goals, class:"form-control has-feedback-left", autofocus: true %>
   </div>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :experience %><br />
-    <%= f.text_field :experience, autofocus: true %>
+    <%= f.text_field :experience, class:"form-control has-feedback-right", autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :bio %><br />
-    <%= f.text_area :bio, autofocus: true %>
-  </div>
-
-
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, class:"form-control has-feedback-right", autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :are_you_mentor %><br />
-    <%= f.check_box :is_mentor%>
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio, class:"form-control has-feedback-left", autofocus: true %>
   </div>
+
+
+
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <%= f.password_field :password, class:"form-control",autocomplete: "off" %>
+
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
+    <% end %><br>
 
 
-
-  <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %><br><br>
+    <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "off" %><br>
   </div>
 
-  <div class="field">
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+    <%= f.label :are_you_mentor %><br />
+    <%= f.check_box :is_mentor %>
+  </div>
+
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
     <%= f.label :avatar, "Attach an Image" %><br />
     <%= f.file_field :avatar %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+    <%= f.submit "Update", class: "btn btn-default btn-primary" %>
   </div>
-<% end %>
+<% end %><br>
 
 
-<!-- <h3>Cancel my account</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %> -->
+<h2>Current Contact Info</h2>
+<hr>
+  <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback list-group">
 
-<h3>YOUR CURRENT CONTACT INFO </h3>
-  <ul class='form' >
     <% current_user.forms_of_contact.to_a.each do |form| %>
-    <%= form_for :contact_info, url: '/users', method: 'DELETE' do |fff| %><li>contact Type:  <%= form.contact_type %> <br>
-    Contact Link:  <%= form.contact_link %>  </li><br>
-     <%= fff.hidden_field :id, value: form.id %>
-    <%= fff.submit :value => "Delete" %> <br><br>
-    <% end %>
-    <% end %>
-  </ul>
+    <%= form_for :contact_info, url: '/users', method: 'DELETE' do |fff| %>
 
-<h3> ADD MORE CONTACT INFO </h3>
+    <p class='list-group-item'>Contact Type:  <%= form.contact_type %> <br>
+    Contact Link:  <%= form.contact_link %>
+    </p><br>
+
+    <%= fff.hidden_field :id, value: form.id %>
+    <%= fff.submit :value => "Delete", class: "btn btn-default btn-primary" %> <br><br>
+    <% end %>
+    <% end %>
+  </div>
+
  <%= form_for :contact_info, url: '/users', method: 'PUT' do |ff| %>
- <h4>Example:</h4> <br>
+
+
+  <div class="col-md-6 col-sm-6 col-xs-12 form-group list-group">
+ <h4>Example:</h4>
  Contact type: (Twitter)<br>
- Contact link: (https://twitter.com/marcom94)<br><br><br>
+ Contact link: (https://twitter.com/marcom94)<br><br>
    <%= ff.label :contact_type %>
-   <%= ff.text_field :contact_type %><br />
+   <%= ff.text_field :contact_type, class:"form-control" %><br />
    <%= ff.hidden_field :user_id, value: current_user.id %>
    <%= ff.label :contact_link %>
-   <%= ff.text_field :contact_link %><br />
+   <%= ff.text_field :contact_link, class:"form-control" %><br />
 
-   <%= ff.submit "Add form of contact"%><br><br><br>
+   <%= ff.submit "Add form of contact", class: "btn btn-default btn-primary" %><br><br>
    <% end %>
+ </div>
 
 
-<h3> YOUR SKILLS </h3>
-  <ul>
+<h2>Skills</h2>
+<hr>
+ <div class="field col-md-6 col-sm-6 col-xs-12 form-group has-feedback list-group">
     <% current_user.skills.uniq.each do |skill| %>
-    <%= form_for :skills, url: '/users', method: 'DELETE' do |fff| %><li> <%= skill.name %> </li><br>
-    <%= fff.hidden_field :id, value: skill.id %>
-    <%= fff.submit :value => "Delete" %> <br><br>
-    <% end %>
-    <% end %>
-  </ul>
+    <%= form_for :skills, url: '/users', method: 'DELETE' do |fff| %>
 
-<% if @skillsnames.length > 0 %>
-   <h3>ADD A NEW SKILL </h3>
-    <%= form_for :skills, url: '/users', method: 'PUT' do |ff| %>
-   <div class="field">
-     <%= ff.hidden_field :user_id, value: current_user.id %>
-     <%= ff.label :name %><br/>
-     <%= ff.select :name, @skillsnames %>
-   </div>
-  <br>
-  <br>
-  <%= ff.submit :value => "Submit Skills" %> <
+    <p class="list-group-item"> <%= skill.name %> </p><br>
+
+    <%= fff.hidden_field :id, value: skill.id %>
+    <%= fff.submit :value => "Delete", class: "btn btn-default btn-primary" %> <br><br>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @skillsnames.length > 0 %>
+     <h4>Add a new skill: </h4>
+      <%= form_for :skills, url: '/users', method: 'PUT' do |ff| %>
+     <div class="field">
+       <%= ff.hidden_field :user_id, value: current_user.id %>
+       <%= ff.label :name %><br/>
+       <%= ff.select :name, @skillsnames %>
+     </div>
+    <br>
+    <br>
+    <%= ff.submit :value => "Submit Skills", class: "btn btn-default btn-primary" %>
+    <% end %>
   <% end %>
-<% end %>
+
+
+  </div>
+</div>
+
