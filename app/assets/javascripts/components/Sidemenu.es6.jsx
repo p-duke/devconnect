@@ -1,6 +1,7 @@
 class Sidemenu extends React.Component {
   render() {
-    let {id,first_name,last_name, avatar}=this.props.current_user
+
+    let {id,first_name,last_name, avatar} = this.props.current_user;
 
     return (
         <div className="col-md-3 left_col">
@@ -15,7 +16,7 @@ class Sidemenu extends React.Component {
             {/* <!-- menu profile quick info --> */}
             <div className="profile">
               <div className="profile_pic">
-              <img src={this.props.avatar ? this.props.avatar : "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png"} className="img-circle profile_img"/>
+              <img src={this.props.avatar.match('missing') ? "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png" : this.props.avatar} className="img-circle profile_img"/>
               </div>
               <div className="profile_info">
                 <span>Welcome,</span>
