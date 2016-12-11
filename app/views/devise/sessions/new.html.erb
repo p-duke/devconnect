@@ -4,6 +4,7 @@
 
   <div id="login" class="animate form">
     <section class="login_content">
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <h1>Log in</h1>
   <div class="field">
@@ -25,11 +26,15 @@
 
   <div class="actions">
       <br/>
-    <%= f.submit "Log in", class:"btn btn-default submit" %>
     <%= render "devise/shared/links" %>
-  </div>
+      <br/>
+    <%= f.submit "Log in", class:"btn btn-default submit" %>
 
+    <a href="<%= root_path %>" role="button" class="btn btn-default submit">Sign in as guest</a>
+
+  </div>
 <% end %>
+
 
     <div>
         <div class="clearfix"></div>

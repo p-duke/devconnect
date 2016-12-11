@@ -1,8 +1,13 @@
 class HomeController < ApplicationController
+# Added guest_user module for login wall workaround
+include UsersHelper
+
   def index
     if !current_user
-      redirect_to '/'
+      @user = UsersHelper.guest_user
+      sign_in(@user)
     end
+
   end
 
   def top_mentors
