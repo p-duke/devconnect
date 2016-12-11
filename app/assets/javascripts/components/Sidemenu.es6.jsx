@@ -16,7 +16,7 @@ class Sidemenu extends React.Component {
             {/* <!-- menu profile quick info --> */}
             <div className="profile">
               <div className="profile_pic">
-              <img src={this.props.avatar ? this.props.avatar : "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png"} className="img-circle profile_img"/>
+              <img src={this.props.avatar.match('missing') ? "https://s3-us-west-2.amazonaws.com/dbcfinalproject/profilePic.png" : this.props.avatar} className="img-circle profile_img"/>
               </div>
               <div className="profile_info">
                 <span>Welcome,</span>
