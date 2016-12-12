@@ -1606,6 +1606,9 @@ locations = ["New York","Chicago","San Francisco","Austin","Seattle"]
 
 User.create!(email: "peter@gmail.com", password: 'password', first_name: "Peter", last_name: "Duke", bio: "A former marketer turned full stack developer after working in the tech industry for four years. During that time helped clients and companies reach new customers with their brand. Took the leap into web development after pursuing programming for the past two years and never growing tired of learning a new concept or language. Now looking to have a greater impact by building software that enhances people's quality of life. I'm a programming and design geek who loves clean code as much as user-friendly interfaces.", cohort_id: cohort.id, cohort_name: "Red Pandas", cohort_location: "New York", cohort_year: 2016, location: "New York", status: "DBC Graduate", goals: "Learn professional Rails development - Switch to using VIM - Gain a deeper understanding of TDD - Study Computer Science data structures and algorithms" ,is_mentor: true)
 
+User.create!(email: "guestuser@guest.com", password: 'password', first_name: "Guest", last_name: "User", bio: "This is where you would fill out a biography with a brief description.", cohort_id: cohort.id, cohort_name: "Red Pandas", cohort_location: "New York", cohort_year: 2016, location: "New York", status: "Guest", goals: "Learn more about the Dev Connect application." ,is_mentor: true)
+
+
 15.times do
   User.create!(email: Faker::Internet.email, password: 'password', first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: bios.sample, cohort_id: cohort.id, cohort_name: cohort.name, cohort_location: cohort.location, cohort_year: cohort.year, location: locations.sample, status: statuses.sample, goals: Faker::Hacker.say_something_smart,is_mentor: mentor.sample)
 end
@@ -1621,7 +1624,6 @@ User.all.each do |user|
     Endorsement.create(endorsed_id: user.id, endorser_id: User.all.sample.id, skill_id: Skill.all.sample.id)
   end
 end
-
 
 Topic.create(name: "Job opportunities", description: 'Here we discuss careers in Computer Science, Computer Engineering, Software Engineering, and related fields.')
 Topic.create(name: "Front-End Development", description: 'Do you want to push browsers to their limits with HTML5, CSS3 and JavaScript?')
@@ -1646,10 +1648,10 @@ end
 
 
 User.all.each do |user|
-  contact_type = ["LinkedIn", "Twitter", "Facebook", "Github", "Slack"]
-  contact_link = ["https://www.linkedin.com/in/#{user.first_name}-#{user.last_name}","@#{user.first_name}","https://www.facebook.com/#{user.first_name}","https://github.com/#{user.first_name}#{user.last_name}","@#{user.last_name}"]
+  contact_type = ["LinkedIn", "Twitter", "Github", "Slack"]
+  contact_link = ["https://www.linkedin.com/in/#{user.first_name}-#{user.last_name}","@#{user.first_name}","https://github.com/#{user.first_name}#{user.last_name}","@#{user.last_name}"]
   n = 0
-  5.times do
+  4.times do
     ContactInfo.create(contact_type: contact_type[n], contact_link: contact_link[n], user_id: user.id)
     n += 1
   end
