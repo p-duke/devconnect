@@ -41,6 +41,10 @@ class Sidemenu extends React.Component {
                       </li>
                       <li><a href="/mentors">Mentors</a>
                       </li>
+                      <li><a href={'/users/sign_out'}>Sign Up</a>
+                      </li>
+                      <li><a href={'/users/sign_out'}>Log Out</a>
+                      </li>
                     </ul>
                   </li>
                 </ul>
